@@ -88,9 +88,16 @@ module.exports = __webpack_require__(12);
 "use strict";
 
 
-__webpack_require__(13);
+var _dom = __webpack_require__(13);
 
 __webpack_require__(14);
+
+;
+
+
+var button = document.querySelector('.btn');
+var lamp = document.querySelector('.lamp');
+(0, _dom.Switcher)(button, lamp);
 
 /***/ }),
 /* 13 */
@@ -99,41 +106,23 @@ __webpack_require__(14);
 "use strict";
 
 
-function Switcher(buttons) {
-    var _loop = function _loop(button) {
-        button.onclick = toggle;
-        function toggle() {
-            if (button.classList.contains('')) {}
-        }
-    };
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-        for (var _iterator = buttons[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var button = _step.value;
-
-            _loop(button);
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function Switcher(button, lamp) {
+    button.onclick = toggle;
+    function toggle() {
+        if (button.innerHTML === 'ON') {
+            button.innerHTML = 'OFF';
+            lamp.style.cssText = 'background-color: limegreen; box-shadow: 0 20px 40px 0 rgba(27, 255, 6, 0.24), 0 30px 70px 0 rgba(14, 179, 22, 0.19);';
+        } else {
+            button.innerHTML = 'ON';
+            lamp.style.cssText = 'background-color: white;';
         }
     }
 }
 
-Switcher(document.querySelectorAll('.btn'));
+exports.Switcher = Switcher;
 
 /***/ }),
 /* 14 */
